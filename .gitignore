@@ -1,0 +1,7 @@
+.devcontainer
+.vscode/settings.json
+build
+managed_components
+dependencies.lock
+sdkconfig
+sdkconfig.old
