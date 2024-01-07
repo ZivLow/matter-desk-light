@@ -18,3 +18,19 @@
  *
  */
 #define CHIP_IM_MAX_NUM_SUBSCRIPTIONS 45
+
+/**
+ * @def CHIP_CONFIG_PERSIST_SUBSCRIPTIONS
+ *
+ * @brief Defines whether to enable resubcription logic
+ *
+ */
+#define CHIP_CONFIG_PERSIST_SUBSCRIPTIONS 1
+
+/**
+ * @def CHIP_CONFIG_SUBSCRIPTION_TIMEOUT_RESUMPTION
+ *
+ * @brief Defines whether to enable resubcription logic
+ *
+ */
+#define CHIP_CONFIG_SUBSCRIPTION_TIMEOUT_RESUMPTION 1
