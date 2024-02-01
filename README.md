@@ -3,6 +3,7 @@
 This project creates a Matter-capable PWM-controlled light, that can be controlled using capacitive buttons or using Home Assistant/Apple HomeKit/Google Home through Matter API.
 
 ## Schematic
+
 ![electrical schematic](schematics/desk-light.png)
 
 ## Thirdparty folder softlink to matter
@@ -69,7 +70,7 @@ ${HOME}/esp/connectedhomeip/scripts/codepregen.py --input-glob "*dimmable-light*
 Tested on:
 OS: Ubuntu 22.04
 *Note* Matter can only be built on linux systems.
-ESP-IDF v5.2 Beta 1
+ESP-IDF v5.2 Beta 2
 
 - GCC 13.2
 - GNU++23

@@ -1,3 +1,17 @@
+#    Copyright 2024 Ziv Low
+#    
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#    
+#        http://www.apache.org/licenses/LICENSE-2.0
+#    
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+
 get_filename_component(CHIP_ROOT ${CMAKE_SOURCE_DIR}/third_party/connectedhomeip REALPATH)
 
 set(PRIV_INCLUDE_DIRS_LIST
@@ -15,8 +29,8 @@ set(SRC_DIRS_LIST
                       "${CMAKE_CURRENT_LIST_DIR}/tasks"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated/attributes"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated"
-                      "${CMAKE_SOURCE_DIR}/zzz_pregenerated/common/dimmable-light/zap/app-templates/zap-generated/"
-                      "${CMAKE_SOURCE_DIR}/zzz_pregenerated/common/dimmable-light/codegen/cpp-app/app/"
+                      #"${CMAKE_SOURCE_DIR}/zzz_pregenerated/common/dimmable-light/zap/app-templates/zap-generated/"
+                      #"${CMAKE_SOURCE_DIR}/zzz_pregenerated/common/dimmable-light/codegen/cpp-app/app/"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/server"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/util"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/reporting"
@@ -48,11 +62,12 @@ set(SRC_DIRS_LIST
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/clusters/identify-server"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/clusters/groups-server"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/clusters/group-key-mgmt-server"
+                      "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/clusters/power-source-server"
 )
 
 set(PRIV_REQUIRES_LIST chip QRCode bt nvs_flash)
 
-set(REQUIRES_LIST driver)
+set(REQUIRES_LIST driver ina226)
 
 idf_component_register(PRIV_INCLUDE_DIRS ${PRIV_INCLUDE_DIRS_LIST}
                        INCLUDE_DIRS ${INCLUDE_DIRS_LIST}
@@ -65,8 +80,8 @@ set(CHIP_CODEGEN_PREGEN_DIR "${CMAKE_SOURCE_DIR}/zzz_pregenerated" CACHE PATH "P
 #set(CHIP_CODEGEN_PREGEN_EXTERNAL_ROOT_DIR "${CMAKE_SOURCE_DIR}" CACHE PATH "External root directory used when pre-generating code.")
 
 include("${CHIP_ROOT}/build/chip/esp32/esp32_codegen.cmake")
-chip_app_component_codegen("${CHIP_ROOT}/common/dimmable-light.matter")
-chip_app_component_zapgen("${CHIP_ROOT}/common/dimmable-light.zap")
+chip_app_component_codegen("${CHIP_ROOT}/common/matter-desk-light-app.matter")
+chip_app_component_zapgen("${CHIP_ROOT}/common/matter-desk-light-app.zap")
 
 set_property(TARGET ${COMPONENT_LIB} PROPERTY CXX_STANDARD 23)
 set_property(TARGET ${COMPONENT_LIB} PROPERTY C_STANDARD 17)

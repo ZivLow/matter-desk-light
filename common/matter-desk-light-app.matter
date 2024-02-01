@@ -1195,6 +1195,19 @@ server cluster GroupKeyManagement = 63 {
   fabric command access(invoke: administer) KeySetReadAllIndices(): KeySetReadAllIndicesResponse = 4;
 }
 
+/** Attributes related to the electrical properties of a device. This cluster is used by power outlets and other devices that need to provide instantaneous data as opposed to metrology data which should be retrieved from the metering cluster.. */
+server cluster ElectricalMeasurement = 2820 {
+  readonly attribute int16s dcVoltage = 256;
+  readonly attribute int16s dcCurrent = 259;
+  readonly attribute int16s dcPower = 262;
+  readonly attribute command_id generatedCommandList[] = 65528;
+  readonly attribute command_id acceptedCommandList[] = 65529;
+  readonly attribute event_id eventList[] = 65530;
+  readonly attribute attrib_id attributeList[] = 65531;
+  readonly attribute bitmap32 featureMap = 65532;
+  readonly attribute int16u clusterRevision = 65533;
+}
+
 endpoint 0 {
   device type ma_rootdevice = 22, version 1;
 
@@ -1228,9 +1241,9 @@ endpoint 0 {
 
   server cluster BasicInformation {
     callback attribute dataModelRevision;
-    callback attribute vendorName;
+    callback attribute vendorName default = "Ziv";
     callback attribute vendorID;
-    callback attribute productName;
+    callback attribute productName default = "Matter Desk Light";
     callback attribute productID;
     ram      attribute nodeLabel;
     callback attribute location default = "XX";
@@ -1513,6 +1526,31 @@ endpoint 1 {
     handle command StopWithOnOff;
   }
 
+  server cluster BasicInformation {
+    callback attribute dataModelRevision;
+    callback attribute vendorName default = "Ziv";
+    callback attribute vendorID;
+    callback attribute productName default = "Matter Desk Light";
+    callback attribute productID;
+    ram      attribute nodeLabel;
+    callback attribute location default = "XX";
+    callback attribute hardwareVersion default = 0;
+    callback attribute hardwareVersionString;
+    callback attribute softwareVersion default = 0;
+    callback attribute softwareVersionString;
+    callback attribute capabilityMinima;
+    callback attribute generatedCommandList;
+    callback attribute acceptedCommandList;
+    callback attribute eventList;
+    callback attribute attributeList;
+    ram      attribute featureMap default = 0;
+    ram      attribute clusterRevision default = 2;
+  }
+}
+endpoint 2 {
+  device type ma_powersource = 17, version 1;
+
+
   server cluster Descriptor {
     callback attribute deviceTypeList;
     callback attribute serverList;
@@ -1524,6 +1562,18 @@ endpoint 1 {
     callback attribute attributeList;
     ram      attribute featureMap default = 0;
     callback attribute clusterRevision default = 2;
+  }
+
+  server cluster ElectricalMeasurement {
+    ram      attribute dcVoltage default = 0x8000;
+    ram      attribute dcCurrent default = 0x8000;
+    ram      attribute dcPower default = 0x8000;
+    callback attribute generatedCommandList;
+    callback attribute acceptedCommandList;
+    callback attribute eventList;
+    callback attribute attributeList;
+    ram      attribute featureMap default = 0;
+    ram      attribute clusterRevision default = 3;
   }
 }
 
