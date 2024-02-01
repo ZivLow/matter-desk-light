@@ -1,6 +1,23 @@
+/*
+ *    Copyright 2024 Ziv Low
+ *    
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *    
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *    
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 #include "DeviceCallbacks.h"
 #include "AppTask.h"
 #include "ButtonTask.h"
+#include "CurrentSensorTask.h"
 #include <common/CHIPDeviceManager.h>
 #include <common/Esp32AppServer.h>
 #include <platform/ESP32/ESP32Utils.h>
@@ -126,4 +143,15 @@ extern "C" void app_main(void)
     {
         ESP_LOGE(TAG, "GetButtonTask().StartButtonTask() failed : %s", ErrorStr(error));
     }
+
+    error = GetCurrentSensorTask().StartCurrentSensorTask();
+    if (error != CHIP_NO_ERROR)
+    {
+        ESP_LOGE(TAG, "GetCurrentSensorTask().StartCurrentSensorTask() failed : %s", ErrorStr(error));
+    }
+
+    // while (true){
+    //     vTaskDelay(1000 / portTICK_PERIOD_MS);
+    // }
+
 }
