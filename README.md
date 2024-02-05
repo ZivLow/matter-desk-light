@@ -2,15 +2,32 @@
 
 This project creates a Matter-capable PWM-controlled light, that can be controlled using capacitive buttons or using Home Assistant/Apple HomeKit/Google Home through Matter API.
 
-## Schematic
-
-![electrical schematic](schematics/desk-light.png)
-
-## Thirdparty folder softlink to matter
-
+## Setup
+1. connectedhomeip (aka Matter) repository is already properly configured and working on your ubuntu machine.
+2. Create third_party folder softlink to matter repository
 ```bash
 ln -s ${HOME}/esp/connectedhomeip ./third_party
 ```
+3. Set up environment
+```bash
+source ~/esp/esp-idf/export.sh
+export IDF_CCACHE_ENABLE=1
+source ~/esp/connectedhomeip/scripts/activate.sh
+```
+4. Build project
+```bash
+idf.py flash monitor
+```
+5. Commission the matter device as per normal according to Home Assistant/Apple HomeKit/Google Home Matter device onboarding procedures.
+A Matter controller/router must already be setup beforehand in your home network.
+
+<img src='QRcode/Desk-Light-QR-Code.png' width='300'>
+
+Manual pairing code: `10596512353`
+
+## Electrical Schematic
+
+![electrical schematic](schematics/desk-light.png)
 
 ## Erase NVS storage to clear WIFI credentials
 
@@ -50,11 +67,11 @@ ${HOME}/esp/connectedhomeip/scripts/tools/zap/generate.py $PATH_TO_ZAP_FILE
 
 ## Running pre-generate
 
-- Change --input-glob `*dimmable-light*` to the filename of `.zap` and `.matter`
+- Change --input-glob `*matter-desk-light-app*` to the filename of `.zap` and `.matter`
 - Change --external-root to parent directory of `.zap` and `.matter` files
 
 ```
-${HOME}/esp/connectedhomeip/scripts/codepregen.py --input-glob "*dimmable-light*" --external-root ${HOME}/Documents/ESP-IDF_Projects/pwm-test/ ${OUTPUT_DIRECTORY:-./zzz_pregenerated/}
+${HOME}/esp/connectedhomeip/scripts/codepregen.py --input-glob "*matter-desk-light-app*" --input-glob "*controller-clusters*" --input-glob "*protocol_messages*" --external-root ${HOME}/Documents/ESP-IDF_Projects/matter-desk-light/ ${OUTPUT_DIRECTORY:-./zzz_pregenerated/}
 ```
 
 # Matter Setup
