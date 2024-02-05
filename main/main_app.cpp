@@ -149,9 +149,4 @@ extern "C" void app_main(void)
     {
         ESP_LOGE(TAG, "GetCurrentSensorTask().StartCurrentSensorTask() failed : %s", ErrorStr(error));
     }
-
-    // while (true){
-    //     vTaskDelay(1000 / portTICK_PERIOD_MS);
-    // }
-
 }

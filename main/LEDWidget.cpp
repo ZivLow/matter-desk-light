@@ -24,7 +24,7 @@ void LEDWidget::Init(void)
     esp_log_level_set(TAG, ESP_LOG_DEBUG);
 
     mState      = false;
-    mBrightness = 0;    // UINT8_MAX/2;
+    mBrightness = UINT8_MAX/2;
     mGPIONum    = (gpio_num_t) CONFIG_LED_GPIO;
 
     ledc_timer_config_t ledc_timer = {
