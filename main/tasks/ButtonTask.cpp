@@ -97,7 +97,7 @@ void ButtonTask::button_set_thresholds(const std::unique_ptr<ButtonTask::Buttons
     {
         touch_pad_read_filtered(buttons, &touch_value);
         ESP_LOGD(TAG, "button_set_threshold: touch pad [%d] val is %d", buttons, touch_value);
-        ESP_ERROR_CHECK(touch_pad_set_thresh(buttons, touch_value * 0.4));
+        ESP_ERROR_CHECK(touch_pad_set_thresh(buttons, touch_value * 0.7));
     }
 }
 
