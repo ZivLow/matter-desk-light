@@ -83,9 +83,16 @@ include("${CHIP_ROOT}/build/chip/esp32/esp32_codegen.cmake")
 chip_app_component_codegen("${CHIP_ROOT}/common/matter-desk-light-app.matter")
 chip_app_component_zapgen("${CHIP_ROOT}/common/matter-desk-light-app.zap")
 
-set_property(TARGET ${COMPONENT_LIB} PROPERTY CXX_STANDARD 23)
-set_property(TARGET ${COMPONENT_LIB} PROPERTY C_STANDARD 17)
+target_compile_features(${COMPONENT_LIB} PUBLIC c_std_23 cxx_std_23)
 target_compile_options(${COMPONENT_LIB} PRIVATE "-DCHIP_HAVE_CONFIG_H")
-target_compile_options(${COMPONENT_LIB} PUBLIC
-           "-DCHIP_ADDRESS_RESOLVE_IMPL_INCLUDE_HEADER=<lib/address_resolve/AddressResolve_DefaultImpl.h>"
+target_compile_options(${COMPONENT_LIB} PUBLIC "-Os;-DCHIP_ADDRESS_RESOLVE_IMPL_INCLUDE_HEADER=<lib/address_resolve/AddressResolve_DefaultImpl.h>")
+
+# Ignore warning -Wdeprecated-declarations
+target_compile_options(${COMPONENT_LIB} PUBLIC "-Wno-deprecated-declarations")
+
+# Ignore warning -Wmissing-field-initializers in Server.cpp and access-control-server.cpp
+set_source_files_properties(
+    ${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/server/Server.cpp
+    ${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/src/app/clusters/access-control-server/access-control-server.cpp
+    PROPERTIES COMPILE_OPTIONS "-Wno-missing-field-initializers"
 )

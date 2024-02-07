@@ -24,7 +24,5 @@ set(EXTRA_COMPONENT_DIRS
 
 project(desk-light)
 
-idf_build_set_property(CXX_COMPILE_OPTIONS "-std=gnu++23;-Os;-DCHIP_HAVE_CONFIG_H;-Wno-missing-field-initializers;-Wno-deprecated-declarations" APPEND)
-idf_build_set_property(C_COMPILE_OPTIONS "-std=gnu17;-Os" APPEND)
 
 flashing_script()
