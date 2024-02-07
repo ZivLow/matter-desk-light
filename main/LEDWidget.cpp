@@ -33,6 +33,7 @@ void LEDWidget::Init(void)
         .timer_num       = LEDC_TIMER_1,        // timer index
         .freq_hz         = 25000,                // frequency of PWM signal
         .clk_cfg         = LEDC_AUTO_CLK,       // Auto select the source clock
+        .deconfigure     = 0,
     };
     ledc_timer_config(&ledc_timer);
     ledc_channel_config_t ledc_channel = {
@@ -43,6 +44,9 @@ void LEDWidget::Init(void)
         .timer_sel  = LEDC_TIMER_1,
         .duty       = 0,
         .hpoint     = 0,
+        .flags = {
+            .output_invert = 0,
+        },
     };
     ledc_channel_config(&ledc_channel);
 }
