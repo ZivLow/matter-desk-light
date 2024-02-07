@@ -14,7 +14,8 @@ void MatterLocalizationConfigurationPluginServerInitCallback();
 void MatterNetworkCommissioningPluginServerInitCallback();
 void MatterOnOffPluginServerInitCallback();
 void MatterOperationalCredentialsPluginServerInitCallback();
-void MatterScenesPluginServerInitCallback();
+void MatterPowerSourcePluginServerInitCallback();
+void MatterScenesManagementPluginServerInitCallback();
 void MatterTimeFormatLocalizationPluginServerInitCallback();
 void MatterUnitLocalizationPluginServerInitCallback();
 
@@ -34,7 +35,8 @@ void MatterUnitLocalizationPluginServerInitCallback();
     MatterNetworkCommissioningPluginServerInitCallback(); \
     MatterOnOffPluginServerInitCallback(); \
     MatterOperationalCredentialsPluginServerInitCallback(); \
-    MatterScenesPluginServerInitCallback(); \
+    MatterPowerSourcePluginServerInitCallback(); \
+    MatterScenesManagementPluginServerInitCallback(); \
     MatterTimeFormatLocalizationPluginServerInitCallback(); \
     MatterUnitLocalizationPluginServerInitCallback();
 

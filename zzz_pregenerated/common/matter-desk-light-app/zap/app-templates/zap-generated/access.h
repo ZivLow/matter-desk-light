@@ -103,6 +103,8 @@
     0x0000001F, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     0x00000028, /* Cluster: Basic Information, Attribute: NodeLabel, Privilege: manage */ \
     0x00000028, /* Cluster: Basic Information, Attribute: Location, Privilege: administer */ \
+    0x0000002B, /* Cluster: Localization Configuration, Attribute: ActiveLocale, Privilege: manage */ \
+    0x0000002C, /* Cluster: Time Format Localization, Attribute: HourFormat, Privilege: manage */ \
     0x00000030, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     0x00000031, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     0x0000003F, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
@@ -116,6 +118,8 @@
     0x00000001, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     0x00000005, /* Cluster: Basic Information, Attribute: NodeLabel, Privilege: manage */ \
     0x00000006, /* Cluster: Basic Information, Attribute: Location, Privilege: administer */ \
+    0x00000000, /* Cluster: Localization Configuration, Attribute: ActiveLocale, Privilege: manage */ \
+    0x00000000, /* Cluster: Time Format Localization, Attribute: HourFormat, Privilege: manage */ \
     0x00000000, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     0x00000004, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     0x00000000, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
@@ -129,6 +133,8 @@
     kMatterAccessPrivilegeAdminister, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: Basic Information, Attribute: NodeLabel, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Basic Information, Attribute: Location, Privilege: administer */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Localization Configuration, Attribute: ActiveLocale, Privilege: manage */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Time Format Localization, Attribute: HourFormat, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
@@ -144,17 +150,9 @@
     0x00000004, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     0x00000004, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     0x00000004, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    0x00000005, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    0x00000005, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    0x00000005, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    0x00000005, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     0x00000030, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     0x00000030, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     0x00000030, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
-    0x00000031, /* Cluster: Network Commissioning, Command: ScanNetworks, Privilege: administer */ \
-    0x00000031, /* Cluster: Network Commissioning, Command: RemoveNetwork, Privilege: administer */ \
-    0x00000031, /* Cluster: Network Commissioning, Command: ConnectNetwork, Privilege: administer */ \
-    0x00000031, /* Cluster: Network Commissioning, Command: ReorderNetwork, Privilege: administer */ \
     0x00000033, /* Cluster: General Diagnostics, Command: TestEventTrigger, Privilege: manage */ \
     0x0000003C, /* Cluster: Administrator Commissioning, Command: OpenCommissioningWindow, Privilege: administer */ \
     0x0000003C, /* Cluster: Administrator Commissioning, Command: RevokeCommissioning, Privilege: administer */ \
@@ -170,6 +168,10 @@
     0x0000003F, /* Cluster: Group Key Management, Command: KeySetRead, Privilege: administer */ \
     0x0000003F, /* Cluster: Group Key Management, Command: KeySetRemove, Privilege: administer */ \
     0x0000003F, /* Cluster: Group Key Management, Command: KeySetReadAllIndices, Privilege: administer */ \
+    0x00000062, /* Cluster: Scenes Management, Command: AddScene, Privilege: manage */ \
+    0x00000062, /* Cluster: Scenes Management, Command: RemoveScene, Privilege: manage */ \
+    0x00000062, /* Cluster: Scenes Management, Command: RemoveAllScenes, Privilege: manage */ \
+    0x00000062, /* Cluster: Scenes Management, Command: StoreScene, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, *command*, privilege) for invoke command
@@ -180,17 +182,9 @@
     0x00000003, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     0x00000004, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     0x00000005, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    0x00000000, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    0x00000002, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    0x00000003, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    0x00000004, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     0x00000000, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     0x00000002, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     0x00000004, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
-    0x00000000, /* Cluster: Network Commissioning, Command: ScanNetworks, Privilege: administer */ \
-    0x00000004, /* Cluster: Network Commissioning, Command: RemoveNetwork, Privilege: administer */ \
-    0x00000006, /* Cluster: Network Commissioning, Command: ConnectNetwork, Privilege: administer */ \
-    0x00000008, /* Cluster: Network Commissioning, Command: ReorderNetwork, Privilege: administer */ \
     0x00000000, /* Cluster: General Diagnostics, Command: TestEventTrigger, Privilege: manage */ \
     0x00000000, /* Cluster: Administrator Commissioning, Command: OpenCommissioningWindow, Privilege: administer */ \
     0x00000002, /* Cluster: Administrator Commissioning, Command: RevokeCommissioning, Privilege: administer */ \
@@ -206,6 +200,10 @@
     0x00000001, /* Cluster: Group Key Management, Command: KeySetRead, Privilege: administer */ \
     0x00000003, /* Cluster: Group Key Management, Command: KeySetRemove, Privilege: administer */ \
     0x00000004, /* Cluster: Group Key Management, Command: KeySetReadAllIndices, Privilege: administer */ \
+    0x00000000, /* Cluster: Scenes Management, Command: AddScene, Privilege: manage */ \
+    0x00000002, /* Cluster: Scenes Management, Command: RemoveScene, Privilege: manage */ \
+    0x00000003, /* Cluster: Scenes Management, Command: RemoveAllScenes, Privilege: manage */ \
+    0x00000004, /* Cluster: Scenes Management, Command: StoreScene, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, command, *privilege*) for invoke command
@@ -216,17 +214,9 @@
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Command: ScanNetworks, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Command: RemoveNetwork, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Command: ConnectNetwork, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Command: ReorderNetwork, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: General Diagnostics, Command: TestEventTrigger, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Administrator Commissioning, Command: OpenCommissioningWindow, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Administrator Commissioning, Command: RevokeCommissioning, Privilege: administer */ \
@@ -242,6 +232,10 @@
     kMatterAccessPrivilegeAdminister, /* Cluster: Group Key Management, Command: KeySetRead, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Group Key Management, Command: KeySetRemove, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Group Key Management, Command: KeySetReadAllIndices, Privilege: administer */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Scenes Management, Command: AddScene, Privilege: manage */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Scenes Management, Command: RemoveScene, Privilege: manage */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Scenes Management, Command: RemoveAllScenes, Privilege: manage */ \
+    kMatterAccessPrivilegeManage, /* Cluster: Scenes Management, Command: StoreScene, Privilege: manage */ \
 }
 
 ////////////////////////////////////////////////////////////////////////////////
