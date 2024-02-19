@@ -29,6 +29,14 @@ Manual pairing code: `10596512353`
 
 ![electrical schematic](schematics/desk-light.png)
 
+## Prototype
+<p align="middle">
+  <img src="schematics/prototype_front.jpg" width="250" />
+  <img src="schematics/prototype_back.jpg" width="250" />
+</p>
+
+Prototype using a power delivery chip to supply 12V to power the IRS4427S MOSFET driver, and 24 (4S6P) 5730 LEDs. A buck converter steps down the voltage to 5V to power the ESP32. The AMS1117 voltage regulator on the ESP32 DevKitC board further steps down the voltage to 3.3V to power the INA226 power monitoring module. 
+
 ## Erase NVS storage to clear WIFI credentials
 
 ```bash
