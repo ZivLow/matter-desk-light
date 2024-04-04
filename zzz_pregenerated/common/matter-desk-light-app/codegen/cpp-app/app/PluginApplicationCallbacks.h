@@ -3,7 +3,9 @@ void MatterAccessControlPluginServerInitCallback();
 void MatterAdministratorCommissioningPluginServerInitCallback();
 void MatterBasicInformationPluginServerInitCallback();
 void MatterDescriptorPluginServerInitCallback();
+void MatterElectricalEnergyMeasurementPluginServerInitCallback();
 void MatterElectricalMeasurementPluginServerInitCallback();
+void MatterElectricalPowerMeasurementPluginServerInitCallback();
 void MatterGeneralCommissioningPluginServerInitCallback();
 void MatterGeneralDiagnosticsPluginServerInitCallback();
 void MatterGroupKeyManagementPluginServerInitCallback();
@@ -14,17 +16,17 @@ void MatterLocalizationConfigurationPluginServerInitCallback();
 void MatterNetworkCommissioningPluginServerInitCallback();
 void MatterOnOffPluginServerInitCallback();
 void MatterOperationalCredentialsPluginServerInitCallback();
-void MatterPowerSourcePluginServerInitCallback();
+void MatterPowerTopologyPluginServerInitCallback();
 void MatterScenesManagementPluginServerInitCallback();
-void MatterTimeFormatLocalizationPluginServerInitCallback();
-void MatterUnitLocalizationPluginServerInitCallback();
 
 #define MATTER_PLUGINS_INIT \
     MatterAccessControlPluginServerInitCallback(); \
     MatterAdministratorCommissioningPluginServerInitCallback(); \
     MatterBasicInformationPluginServerInitCallback(); \
     MatterDescriptorPluginServerInitCallback(); \
+    MatterElectricalEnergyMeasurementPluginServerInitCallback(); \
     MatterElectricalMeasurementPluginServerInitCallback(); \
+    MatterElectricalPowerMeasurementPluginServerInitCallback(); \
     MatterGeneralCommissioningPluginServerInitCallback(); \
     MatterGeneralDiagnosticsPluginServerInitCallback(); \
     MatterGroupKeyManagementPluginServerInitCallback(); \
@@ -35,8 +37,6 @@ void MatterUnitLocalizationPluginServerInitCallback();
     MatterNetworkCommissioningPluginServerInitCallback(); \
     MatterOnOffPluginServerInitCallback(); \
     MatterOperationalCredentialsPluginServerInitCallback(); \
-    MatterPowerSourcePluginServerInitCallback(); \
-    MatterScenesManagementPluginServerInitCallback(); \
-    MatterTimeFormatLocalizationPluginServerInitCallback(); \
-    MatterUnitLocalizationPluginServerInitCallback();
+    MatterPowerTopologyPluginServerInitCallback(); \
+    MatterScenesManagementPluginServerInitCallback();
 

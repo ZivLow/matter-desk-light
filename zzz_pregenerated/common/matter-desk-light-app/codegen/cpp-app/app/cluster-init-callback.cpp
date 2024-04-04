@@ -22,8 +22,14 @@ void emberAfClusterInitCallback(EndpointId endpoint, ClusterId clusterId)
     case app::Clusters::Descriptor::Id:
         emberAfDescriptorClusterInitCallback(endpoint);
         break;
+    case app::Clusters::ElectricalEnergyMeasurement::Id:
+        emberAfElectricalEnergyMeasurementClusterInitCallback(endpoint);
+        break;
     case app::Clusters::ElectricalMeasurement::Id:
         emberAfElectricalMeasurementClusterInitCallback(endpoint);
+        break;
+    case app::Clusters::ElectricalPowerMeasurement::Id:
+        emberAfElectricalPowerMeasurementClusterInitCallback(endpoint);
         break;
     case app::Clusters::GeneralCommissioning::Id:
         emberAfGeneralCommissioningClusterInitCallback(endpoint);
@@ -55,17 +61,11 @@ void emberAfClusterInitCallback(EndpointId endpoint, ClusterId clusterId)
     case app::Clusters::OperationalCredentials::Id:
         emberAfOperationalCredentialsClusterInitCallback(endpoint);
         break;
-    case app::Clusters::PowerSource::Id:
-        emberAfPowerSourceClusterInitCallback(endpoint);
+    case app::Clusters::PowerTopology::Id:
+        emberAfPowerTopologyClusterInitCallback(endpoint);
         break;
     case app::Clusters::ScenesManagement::Id:
         emberAfScenesManagementClusterInitCallback(endpoint);
-        break;
-    case app::Clusters::TimeFormatLocalization::Id:
-        emberAfTimeFormatLocalizationClusterInitCallback(endpoint);
-        break;
-    case app::Clusters::UnitLocalization::Id:
-        emberAfUnitLocalizationClusterInitCallback(endpoint);
         break;
     default:
         // Unrecognized cluster ID
