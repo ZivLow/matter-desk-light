@@ -157,19 +157,19 @@ void AppTask::UpdateLightingClusterState()
 {
     ESP_LOGI(TAG, "Writing to OnOff cluster");
     // write the new on/off value
-    EmberAfStatus status = Clusters::OnOff::Attributes::OnOff::Set(kLightEndpointId, AppLED.IsTurnedOn());
+    Protocols::InteractionModel::Status status = Clusters::OnOff::Attributes::OnOff::Set(kLightEndpointId, AppLED.IsTurnedOn());
 
-    if (status != EMBER_ZCL_STATUS_SUCCESS)
+    if (status != Protocols::InteractionModel::Status::Success)
     {
-        ESP_LOGE(TAG, "Updating on/off cluster failed: %x", status);
+        ESP_LOGE(TAG, "Updating on/off cluster failed: %x", ChipLogValueIMStatus(status));
     }
 
     ESP_LOGI(TAG, "Writing to Current Level cluster");
     status = Clusters::LevelControl::Attributes::CurrentLevel::Set(kLightEndpointId, AppLED.GetLevel());
 
-    if (status != EMBER_ZCL_STATUS_SUCCESS)
+    if (status != Protocols::InteractionModel::Status::Success)
     {
-        ESP_LOGE(TAG, "Updating level cluster failed: %x", status);
+        ESP_LOGE(TAG, "Updating level cluster failed: %x", ChipLogValueIMStatus(status));
     }
 }
 
@@ -190,26 +190,26 @@ void AppTask::UpdateElectricalMeasurementClusterState(const AppEvent &aEvent)
 
     ESP_LOGI(TAG, "Writing to Electrical Measurement cluster");
     // Set new DC voltage
-    EmberAfStatus status = DcVoltage::Set(kElectricalMeasurementEndpointId, aEvent.mCurrentSensorEvent.DcVoltage);
+    Protocols::InteractionModel::Status status = DcVoltage::Set(kElectricalMeasurementEndpointId, aEvent.mCurrentSensorEvent.DcVoltage);
 
-    if (status != EMBER_ZCL_STATUS_SUCCESS)
+    if (status != Protocols::InteractionModel::Status::Success)
     {
-        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Voltage, failed: %x", status);
+        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Voltage, failed: %x", ChipLogValueIMStatus(status));
     }
 
     // Set new DC current
     status = DcCurrent::Set(kElectricalMeasurementEndpointId, aEvent.mCurrentSensorEvent.DcCurrent);
 
-    if (status != EMBER_ZCL_STATUS_SUCCESS)
+    if (status != Protocols::InteractionModel::Status::Success)
     {
-        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Current, failed: %x", status);
+        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Current, failed: %x", ChipLogValueIMStatus(status));
     }
 
     // Set new DC power
     status = DcPower::Set(kElectricalMeasurementEndpointId, aEvent.mCurrentSensorEvent.DcPower);
 
-    if (status != EMBER_ZCL_STATUS_SUCCESS)
+    if (status != Protocols::InteractionModel::Status::Success)
     {
-        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Power, failed: %x", status);
+        ESP_LOGE(TAG, "Updating electrical measurement cluster, Attribute DC Power, failed: %x", ChipLogValueIMStatus(status));
     }
 }
